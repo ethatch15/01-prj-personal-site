@@ -26,7 +26,7 @@ body {
 
     font-family: Arial, Helvetica, sans-serif;
 
-    background-color: #f7f6f2;
+    background-color: #0ecaf9;
     color: #171717;
 
     line-height: 1.6;
@@ -134,138 +134,38 @@ nav a:hover {
 
     text-decoration: none;
 
-    border-radius: 3px;
+    border-radius: 6px;
 
     font-size: 14px;
+
+    /* Smooth card-style hover animation */
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .button:hover {
     background-color: #444;
+
+    /* Makes the button lift like a card */
+    transform: translateY(-5px);
+
+    /* Adds depth beneath the button */
+    box-shadow: 0 10px 20px rgba(23, 23, 23, 0.3);
 }
 
+.button:active {
+    /* Slightly presses the button when clicked */
+    transform: translateY(-1px);
 
-/* ==================================================
-   GENERAL SECTIONS
-   ================================================== */
-
-.section {
-    max-width: 1100px;
-
-    margin: 0 auto;
-
-    padding: 100px 30px;
+    box-shadow: 0 4px 8px rgba(23, 23, 23, 0.25);
 }
 
-.section-heading {
-    margin-bottom: 50px;
-}
-
-.section-heading h2 {
-    margin: 0;
-
-    font-size: 50px;
-    line-height: 1.1;
-
-    letter-spacing: -2px;
-}
-
-
-/* ==================================================
-   PROJECTS
-   ================================================== */
-
-.project-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.project-card {
-    min-height: 330px;
-
-    padding: 30px;
-
-    background-color: #e9e7e0;
-
-    border: 1px solid #ddd;
-}
-
-.project-number {
-    color: #888;
-
-    font-size: 13px;
-}
-
-.project-card h3 {
-    margin-top: 70px;
-
-    font-size: 28px;
-}
-
-.project-card p {
-    color: #666;
-}
-
-.project-tools {
-    font-size: 12px;
-    font-weight: bold;
-
-    letter-spacing: 1px;
-}
-
-.project-link {
-    display: inline-block;
-
-    margin-top: 15px;
-
-    color: #171717;
-
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.project-link:hover {
-    text-decoration: underline;
-}
-
-
-/* ==================================================
-   ABOUT
-   ================================================== */
-
-.about-content {
-    display: grid;
-
-    grid-template-columns: 1fr 350px;
-
-    gap: 80px;
-
-    align-items: start;
-}
-
-.about-text {
-    max-width: 650px;
-
-    font-size: 19px;
-}
-
-.about-text p {
-    margin-top: 0;
-    margin-bottom: 25px;
-}
-
-.photo-placeholder {
-    height: 350px;
-
-    background-color: #dedcd5;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    color: #888;
+.button:focus-visible {
+    /* Accessible keyboard focus indicator */
+    outline: 3px solid rgba(23, 23, 23, 0.4);
+    outline-offset: 4px;
 }
 
 
