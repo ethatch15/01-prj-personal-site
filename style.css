@@ -506,6 +506,13 @@ a {
     text-transform: uppercase;
 }
 
+.photo-placeholder img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    display: block;
+}
+
 .photo-placeholder span {
     display: inline-flex;
     align-items: center;
