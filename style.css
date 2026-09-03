@@ -1,5 +1,5 @@
 /* ==================================================
-   RESET
+   RESET / VARIABLES
    ================================================== */
 
 * {
@@ -15,8 +15,7 @@ html {
     --ink: #171717;
     --muted: #686861;
     --line: #bdbdb5;
-    --soft-line: #d8d8d1;
-    --accent: #e8e5dc;
+    --accent: #e4e1d8;
 }
 
 body {
@@ -114,18 +113,14 @@ a {
     border-bottom: 1px solid var(--line);
 }
 
-.hero-kicker,
-.section-label,
-.section-number,
-.card-top,
-.card-bottom,
-.text-link {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 .hero-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
     margin-bottom: 28px;
 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.14em;
@@ -166,19 +161,75 @@ a {
     font-size: 18px;
 }
 
-.text-link {
-    white-space: nowrap;
 
+/* ==================================================
+   LINKS / BUTTONS
+   ================================================== */
+
+.text-link,
+.icon-link,
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.text-link,
+.icon-link {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 0.08em;
-    text-transform: uppercase;
     text-decoration: none;
+    text-transform: uppercase;
 }
 
-.text-link:hover {
+.text-link:hover,
+.icon-link:hover {
     text-decoration: underline;
     text-underline-offset: 5px;
+}
+
+.text-link svg,
+.icon-link svg {
+    transition: transform 0.2s ease;
+}
+
+.text-link:hover svg,
+.icon-link:hover svg {
+    transform: translate(3px, -3px);
+}
+
+.button {
+    padding: 14px 24px;
+
+    color: var(--paper);
+    background: var(--ink);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.button:hover {
+    color: var(--ink);
+    background: var(--accent);
+    box-shadow: 5px 5px 0 var(--ink);
+    transform: translate(-3px, -3px);
+}
+
+.button:active {
+    box-shadow: 2px 2px 0 var(--ink);
+    transform: translate(0, 0);
 }
 
 
@@ -206,15 +257,6 @@ a {
     border-bottom: 1px solid var(--line);
 }
 
-.section-number,
-.section-label {
-    color: var(--muted);
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
 .section-header h2 {
     margin: 0;
 
@@ -224,6 +266,23 @@ a {
     letter-spacing: -0.08em;
 }
 
+.section-number,
+.section-label {
+    color: var(--muted);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
 
 /* ==================================================
    PROJECTS
@@ -231,7 +290,7 @@ a {
 
 .project-grid {
     display: grid;
-    grid-template-columns: 1.25fr 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
@@ -251,17 +310,34 @@ a {
         transform 0.25s ease;
 }
 
+.project-card-large {
+    grid-row: span 2;
+}
+
 .project-card:hover {
     color: var(--paper);
     background: var(--ink);
     transform: translateY(-6px);
 }
 
+.future-project {
+    background: transparent;
+    border-style: dashed;
+}
+
+.future-project:hover {
+    color: var(--ink);
+    background: var(--accent);
+    border-style: solid;
+}
+
 .card-top,
 .card-bottom {
     display: flex;
     justify-content: space-between;
+    gap: 15px;
 
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     font-weight: bold;
     letter-spacing: 0.08em;
@@ -294,17 +370,82 @@ a {
     color: #c9c9c1;
 }
 
+.future-project:hover .card-content p {
+    color: var(--muted);
+}
+
 .card-bottom {
     padding-top: 18px;
     border-top: 1px solid currentColor;
 }
 
-.card-bottom a {
-    text-decoration: none;
+
+/* ==================================================
+   GITHUB CONTRIBUTIONS
+   ================================================== */
+
+.github-contributions {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 80px;
+    padding-top: 28px;
+
+    border-top: 1px solid var(--line);
 }
 
-.card-bottom a:hover {
-    text-decoration: underline;
+.github-heading {
+    display: grid;
+    grid-template-columns: 55px 1fr auto;
+    gap: 20px;
+    align-items: start;
+
+    margin-bottom: 28px;
+}
+
+.github-heading h3 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    margin: 0 0 8px;
+
+    font-size: 28px;
+    font-weight: normal;
+    letter-spacing: -0.06em;
+}
+
+.github-heading h3 svg {
+    width: 22px;
+    height: 22px;
+}
+
+.github-heading p {
+    margin: 0;
+
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.github-heading a {
+    color: var(--ink);
+}
+
+.github-chart {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    overflow: hidden;
+
+    background: #ebe9e1;
+    border: 1px solid var(--ink);
+}
+
+.github-chart img {
+    display: block;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 
@@ -334,6 +475,20 @@ a {
     letter-spacing: -0.06em;
 }
 
+.about-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    color: var(--muted);
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
 .photo-placeholder {
     min-height: 360px;
 
@@ -349,6 +504,12 @@ a {
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+}
+
+.photo-placeholder span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 
@@ -400,7 +561,7 @@ a {
 
 
 /* ==================================================
-   CONTACT
+   CONTACT / FOOTER
    ================================================== */
 
 .contact-section {
@@ -429,36 +590,12 @@ a {
     font-size: 17px;
 }
 
-.button {
-    display: inline-block;
-    padding: 14px 24px;
-
-    color: var(--paper);
-    background: var(--ink);
-
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    text-decoration: none;
-    text-transform: uppercase;
-
-    transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
+.contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
 }
-
-.button:hover {
-    color: var(--ink);
-    background: var(--accent);
-    transform: translateY(-4px);
-}
-
-
-/* ==================================================
-   FOOTER
-   ================================================== */
 
 .site-footer {
     max-width: 1240px;
@@ -476,10 +613,64 @@ a {
     text-transform: uppercase;
 }
 
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+
+/* ==================================================
+   LUCIDE ICONS
+   ================================================== */
+
+[data-lucide] {
+    width: 15px;
+    height: 15px;
+    stroke-width: 1.8;
+    vertical-align: middle;
+}
+
+.button svg {
+    width: 16px;
+    height: 16px;
+}
+
+.hero-kicker svg,
+.section-label svg {
+    width: 14px;
+    height: 14px;
+}
+
+.coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--muted);
+}
+
+.coming-soon svg {
+    width: 13px;
+    height: 13px;
+}
+
 
 /* ==================================================
    MOBILE
    ================================================== */
+
+@media (max-width: 900px) {
+    .github-heading {
+        grid-template-columns: 40px 1fr;
+    }
+
+    .github-heading a {
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 5px;
+    }
+}
 
 @media (max-width: 700px) {
     .site-header,
@@ -511,10 +702,9 @@ a {
     }
 
     .hero-bottom {
+        display: block;
         margin-top: 55px;
         margin-left: 0;
-
-        display: block;
     }
 
     .hero-bottom p {
@@ -539,6 +729,10 @@ a {
         min-height: 320px;
     }
 
+    .project-card-large {
+        grid-row: auto;
+    }
+
     .about-layout {
         gap: 45px;
     }
@@ -555,6 +749,32 @@ a {
         border-right: none;
     }
 
+    .github-contributions {
+        margin-top: 55px;
+        padding-top: 22px;
+    }
+
+    .github-heading {
+        grid-template-columns: 28px 1fr;
+        gap: 12px;
+    }
+
+    .github-heading h3 {
+        font-size: 22px;
+    }
+
+    .github-heading p {
+        font-size: 13px;
+    }
+
+    .github-chart {
+        padding: 10px;
+    }
+
+    .github-chart img {
+        width: 100%;
+    }
+
     .contact-section {
         padding-top: 100px;
         padding-bottom: 100px;
@@ -565,6 +785,10 @@ a {
         padding-left: 20px;
 
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+    }
+
+    .footer-links {
+        gap: 12px;
     }
 }
