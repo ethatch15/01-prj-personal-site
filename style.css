@@ -314,6 +314,15 @@ a {
     grid-row: span 2;
 }
 
+.project-card-wide {
+    grid-column: 1 / -1;
+    min-height: 300px;
+}
+
+.project-card-wide .card-content p {
+    max-width: 480px;
+}
+
 .project-card:hover {
     color: var(--paper);
     background: var(--ink);
